@@ -21,5 +21,4 @@ mkdir $path
 	Remove-Item -Recurse "$path\$base\Source\bin"
 	Remove-Item -Recurse "$path\$base\Source\obj"
 	Remove-Item "$path\$base\Source\packages.config"
-	Remove-Item "$path\$base\\About\PublishedFileId.txt"
 }
