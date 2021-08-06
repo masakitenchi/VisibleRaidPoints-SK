@@ -2,7 +2,7 @@
 using Verse;
 using HarmonyLib;
 
-namespace RealTimeAutoSave
+namespace VisibleRaidPoints
 {
     public class VisibleRaidPointsMod : Mod
     {

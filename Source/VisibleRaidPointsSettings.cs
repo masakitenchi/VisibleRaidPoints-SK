@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace RealTimeAutoSave
+namespace VisibleRaidPoints
 {
     public class VisibleRaidPointsSettings : ModSettings
     {

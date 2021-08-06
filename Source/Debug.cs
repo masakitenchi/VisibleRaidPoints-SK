@@ -1,4 +1,4 @@
-﻿namespace RealTimeAutoSave
+﻿namespace VisibleRaidPoints
 {
     public static class Debug
     {
