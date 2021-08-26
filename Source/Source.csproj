@@ -35,8 +35,8 @@
       <HintPath>..\packages\Lib.Harmony.2.1.0\lib\net472\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="1.2">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\1.2.dll</HintPath>
+    <Reference Include="1.3">
+      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\1.3.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,9 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Debug.cs" />
+    <Compile Include="Patch_IncidentWorker_Raid.cs" />
+    <Compile Include="Patch_StorytellerComp_RandomMain.cs" />
+    <Compile Include="Patch_StorytellerUtility.cs" />
     <Compile Include="Patch_IncidentWorker.cs" />
+    <Compile Include="ThreatPointsBreakdown.cs" />
     <Compile Include="VisibleRaidPointsMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisibleRaidPointsRefs.cs" />
     <Compile Include="VisibleRaidPointsSettings.cs" />
   </ItemGroup>
   <ItemGroup>
