@@ -17,6 +17,7 @@ Korean translation by PenguinsCanFly.
 Note: The current version of this mod is no longer compatible with version 1.2 of the game. For a 1.2-compatible version of the mod with reduced functionality, you can download it from the "1.2-compatibility" branch on GitHub: https://github.com/1trickPonyta/VisibleRaidPoints/tree/1.2-compatibility
 
 === Updates ===
+09/28/2021: Added extra error logging.
 08/26/2021: Added threat points breakdown feature.
 08/09/2021: Added Korean translation.
 08/06/2021: Enabled visible threat points for additional incident types including infestations, crashed ship parts, mechanoid clusters, manhunter packs, animal mass insanity, and caravan ambushes. Added Spanish translation.

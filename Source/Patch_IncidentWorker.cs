@@ -13,6 +13,12 @@ namespace VisibleRaidPoints
     {
         public static void Prefix(IncidentWorker __instance, ref TaggedString baseLetterLabel, ref TaggedString baseLetterText, ref IncidentParms parms)
         {
+            if (parms == null)
+            {
+                Debug.Log("No IncidentParms available. Cannot determine threat points. This should never happen.");
+                return;
+            }
+
             if (__instance is IncidentWorker_RaidEnemy || 
                 __instance is IncidentWorker_Infestation || 
                 __instance is IncidentWorker_CrashedShipPart || 
@@ -33,6 +39,18 @@ namespace VisibleRaidPoints
 
                 if (VisibleRaidPointsSettings.ShowBreakdown)
                 {
+                    if (ThreatPointsBreakdown.PointsPerPawn == null)
+                    {
+                        Debug.Log("Points per pawn not initialized. Cannot provide threat points breakdown. Harmony transpiler patch probably failed.");
+                        return;
+                    }
+
+                    if (Find.Storyteller == null || Find.Storyteller.difficulty == null)
+                    {
+                        Debug.Log("Storyteller or difficulty settings not available. Cannot provide threat points breakdown. This shouldn't happen unless version < 1.3.");
+                        return;
+                    }
+
                     float clampLow = 35f;
                     float clampHigh = 10000f;
 
@@ -69,14 +87,9 @@ namespace VisibleRaidPoints
                         baseLetterText += $"\n\n{"VisibleRaidPoints_BreakdownGraceFactorDesc".Translate()}: {ThreatPointsBreakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({"VisibleRaidPoints_BreakdownGraceFactorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}";
                     }
 
-                    if (ThreatPointsBreakdown.StorytellerRandomFactor > 0f)
-                    {
-                        baseLetterText += $"\n\n{"VisibleRaidPoints_StorytellerRandomFactorDesc".Translate()}: {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                    }
-
                     // Running total pre-clamp
                     baseLetterText += $"\n\n{"VisibleRaidPoints_RunningTotalPreClampDesc".Translate()}";
-                    baseLetterText += $"\n({((int)ThreatPointsBreakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)} + {((int)ThreatPointsBreakdown.PointsFromPawns).ToString().Colorize(ColoredText.FactionColor_Hostile)}) {(ThreatPointsBreakdown.TargetRandomFactor != 1f? $"x {ThreatPointsBreakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}x {ThreatPointsBreakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} x {Find.Storyteller.difficulty.threatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)} {(ThreatPointsBreakdown.GraceFactor != 1f? $"x {ThreatPointsBreakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}{(ThreatPointsBreakdown.StorytellerRandomFactor > 0f? $"x {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}= {((int) ThreatPointsBreakdown.PreClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+                    baseLetterText += $"\n({((int)ThreatPointsBreakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)} + {((int)ThreatPointsBreakdown.PointsFromPawns).ToString().Colorize(ColoredText.FactionColor_Hostile)}) {(ThreatPointsBreakdown.TargetRandomFactor != 1f? $"x {ThreatPointsBreakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}x {ThreatPointsBreakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} x {Find.Storyteller.difficulty.threatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)} {(ThreatPointsBreakdown.GraceFactor != 1f? $"x {ThreatPointsBreakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}= {((int) ThreatPointsBreakdown.PreClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
                     
                     if (ThreatPointsBreakdown.PreClamp < clampLow)
                     {
@@ -86,6 +99,11 @@ namespace VisibleRaidPoints
                     if (ThreatPointsBreakdown.PreClamp > clampHigh)
                     {
                         baseLetterText += $"\n\n{"VisibleRaidPoints_BreakdownClampHighDesc".Translate(clampHigh)}";
+                    }
+
+                    if (ThreatPointsBreakdown.StorytellerRandomFactor > 0f)
+                    {
+                        baseLetterText += $"\n\n{"VisibleRaidPoints_StorytellerRandomFactorDesc".Translate()}: {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
                     }
 
                     if (ThreatPointsBreakdown.RaidArrivalModeFactor > 0f)
@@ -98,11 +116,11 @@ namespace VisibleRaidPoints
                         baseLetterText += $"\n\n{"VisibleRaidPoints_RaidStrategyFactorDesc".Translate()}: {ThreatPointsBreakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({ThreatPointsBreakdown.RaidStrategyDesc})".Colorize(ColoredText.SubtleGrayColor)}";
                     }
 
-                    if (ThreatPointsBreakdown.RaidArrivalModeFactor > 0f || ThreatPointsBreakdown.RaidStrategyFactor > 0f)
+                    if (ThreatPointsBreakdown.StorytellerRandomFactor > 0f || ThreatPointsBreakdown.RaidArrivalModeFactor > 0f || ThreatPointsBreakdown.RaidStrategyFactor > 0f)
                     {
                         // Running total pre-final
                         baseLetterText += $"\n\n{"VisibleRaidPoints_RunningTotalPreClampDesc".Translate()}";
-                        baseLetterText += $"\n{((int)Mathf.Clamp(ThreatPointsBreakdown.PreClamp, clampLow, clampHigh)).ToString().Colorize(ColoredText.FactionColor_Hostile)} {(ThreatPointsBreakdown.RaidArrivalModeFactor > 0f ? $"x {ThreatPointsBreakdown.RaidArrivalModeFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidStrategyFactor > 0f ? $"x {ThreatPointsBreakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}= {((int)parms.points).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+                        baseLetterText += $"\n{((int)Mathf.Clamp(ThreatPointsBreakdown.PreClamp, clampLow, clampHigh)).ToString().Colorize(ColoredText.FactionColor_Hostile)} {(ThreatPointsBreakdown.StorytellerRandomFactor > 0f ? $"x {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidArrivalModeFactor > 0f ? $"x {ThreatPointsBreakdown.RaidArrivalModeFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidStrategyFactor > 0f ? $"x {ThreatPointsBreakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}= {((int)parms.points).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
                     }
 
                     baseLetterText += "\n\n----------------------";
