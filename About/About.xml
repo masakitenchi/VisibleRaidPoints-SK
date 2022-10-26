@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>Visible Raid Points</name>
-	<author>1trickPonyta</author>
-	<packageId>visibleraidpoints.1trickPonyta</packageId>
+	<author>1trickPwnyta</author>
+	<packageId>visibleraidpoints.1trickPwnyta</packageId>
 	<supportedVersions>
 		<li>1.3</li>
+		<li>1.4</li>
 	</supportedVersions>
 	<description>
 Ever wondered just how many points the game used to generate a raid? Are you getting the maximum 10,000 point raids yet? Now you'll know because you can see exactly how many raid points are used to generate every raid and many other types of incidents.
@@ -19,6 +20,8 @@ Note: The current version of this mod is no longer compatible with version 1.2 o
 Note: The threat points breakdown feature of this mod is not compatibile with my other mod, Unlimited Threat Scale (https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435). For a compatibile version of the mod, you can download it from the "uts-compatibility" branch on GitHub: https://github.com/1trickPwnyta/VisibleRaidPoints/tree/uts-compatibility You will also need to download the compatible version of Unlimited Threat Scale at https://github.com/1trickPwnyta/UnlimitedThreatScale/tree/vrp-compatibility
 
 === Updates ===
+10/26/2022: Updated to 1.4
+03/09/2022: Created alternate version of the mod for compatibility with Unlimited Threat Scale
 09/28/2021: Added extra error logging.
 08/26/2021: Added threat points breakdown feature.
 08/09/2021: Added Korean translation.

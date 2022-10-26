@@ -1,0 +1,4 @@
+D:\Development\RimWorld Mods\RealTimeAutoSave\1.2\Assemblies\RealTimeAutoSave.dll
+D:\Development\RimWorld Mods\RealTimeAutoSave\1.2\Source\obj\Release\Source.csproj.AssemblyReference.cache
+D:\Development\RimWorld Mods\RealTimeAutoSave\1.2\Source\obj\Release\Source.csproj.CoreCompileInputs.cache
+D:\Development\RimWorld Mods\RealTimeAutoSave\1.2\Source\obj\Release\RealTimeAutoSave.dll
