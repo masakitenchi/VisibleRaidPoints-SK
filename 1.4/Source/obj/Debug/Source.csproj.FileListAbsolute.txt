@@ -17,3 +17,7 @@ D:\Development\RimWorld Mods\.1.3\VisibleRaidPoints\1.4\Assemblies\VisibleRaidPo
 D:\Development\RimWorld Mods\.1.3\VisibleRaidPoints\1.4\Source\obj\Debug\Source.csproj.AssemblyReference.cache
 D:\Development\RimWorld Mods\.1.3\VisibleRaidPoints\1.4\Source\obj\Debug\Source.csproj.CoreCompileInputs.cache
 D:\Development\RimWorld Mods\.1.3\VisibleRaidPoints\1.4\Source\obj\Debug\VisibleRaidPoints.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\VisibleRaidPoints-SK\1.4\Assemblies\VisibleRaidPoints.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\VisibleRaidPoints-SK\1.4\Source\obj\Debug\Source.csproj.AssemblyReference.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\VisibleRaidPoints-SK\1.4\Source\obj\Debug\Source.csproj.CoreCompileInputs.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\VisibleRaidPoints-SK\1.4\Source\obj\Debug\VisibleRaidPoints.dll

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "5O4foGa8xT0ulV641G25MH4m9tie/DdU3JimgQkKYyfJoJvho1FkHnNXE96Z1LtxEU8YvAjR/njOb6CoTyGDag==",
+  "success": true,
+  "projectFilePath": "D:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\VisibleRaidPoints-SK\\1.4\\Source\\Source.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fucon\\.nuget\\packages\\krafs.rimworld.ref\\1.4.3704\\krafs.rimworld.ref.1.4.3704.nupkg.sha512",
+    "C:\\Users\\fucon\\.nuget\\packages\\lib.harmony\\2.2.2\\lib.harmony.2.2.2.nupkg.sha512"
+  ],
+  "logs": []
+}

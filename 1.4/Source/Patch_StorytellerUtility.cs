@@ -7,8 +7,7 @@ using Verse;
 
 namespace VisibleRaidPoints
 {
-    [HarmonyPatch(typeof(StorytellerUtility))]
-    [HarmonyPatch("DefaultThreatPointsNow")]
+    [HarmonyPatch("SK.Patch_StorytellerUtility_DefaultThreatPointsNow","Prefix")]
     public static class Patch_StorytellerUtility_DefaultThreatPointsNow
     {
         private enum Step
@@ -26,6 +25,7 @@ namespace VisibleRaidPoints
             Done
         }
 
+        [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
         {
             LocalBuilder pawn = il.DeclareLocal(typeof(Pawn));
