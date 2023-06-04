@@ -11,6 +11,10 @@ namespace VisibleRaidPoints
     [HarmonyPatch(new[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(IncidentParms), typeof(LookTargets), typeof(NamedArgument[]) })]
     public static class Patch_IncidentWorker_SendStandardLetter
     {
+
+
+        public static readonly float clampLow = StorytellerUtility.GlobalPointsMin();
+        public static readonly float clampHigh = StorytellerUtility.GlobalPointsMax;
         public static void Prefix(IncidentWorker __instance, ref TaggedString baseLetterLabel, ref TaggedString baseLetterText, ref IncidentParms parms)
         {
             if (parms == null)
@@ -50,9 +54,6 @@ namespace VisibleRaidPoints
                         Debug.Log("Storyteller or difficulty settings not available. Cannot provide threat points breakdown. This shouldn't happen unless version < 1.3.");
                         return;
                     }
-
-                    float clampLow = 35f;
-                    float clampHigh = 10000f;
 
                     baseLetterText += $"\n\n=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===";
                     
