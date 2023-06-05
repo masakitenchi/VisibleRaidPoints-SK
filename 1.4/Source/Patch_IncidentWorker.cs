@@ -14,7 +14,7 @@ namespace VisibleRaidPoints
 
 
         public static readonly float clampLow = StorytellerUtility.GlobalPointsMin();
-        public static readonly float clampHigh = StorytellerUtility.GlobalPointsMax;
+        public static readonly float clampHigh = 30000f;
         public static void Prefix(IncidentWorker __instance, ref TaggedString baseLetterLabel, ref TaggedString baseLetterText, ref IncidentParms parms)
         {
             if (parms == null)
